@@ -17,7 +17,6 @@ const Image = ({
         greyscale={grayscale}
         brightness={brightness}
         contrast={contrast}
-        loadBlur
       />
       <h3 className="font-bold">Owner:</h3>
       {owner}
@@ -30,10 +29,14 @@ const Image = ({
       <Share collaboraters={collaboraters} id={id} setPaused={setPaused} />
       <Link
         to="/edit"
-        state={{ from: {
-          id, url, brightness, contrast, grayscale,
-        },
-        }}>
+        state={
+          {
+            from: {
+              id, url, brightness, contrast, grayscale,
+            },
+          }
+        }
+      >
         <button type="button" className="bg-sky-400 text-white p-1 rounded">Edit</button>
       </Link>
     </>

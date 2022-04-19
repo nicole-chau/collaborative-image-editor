@@ -40,7 +40,7 @@ const LoggedIn = () => {
       </div>
       <Upload />
       {/* <Image title="dog" url="https://images.indianexpress.com/2021/01/Golden-Retriever-dog.jpg" owner="nicole" lastEdited="user" collaboraters="hi" /> */}
-      <AllImages />
+      <AllImages user={user} />
     </>
   )
 }

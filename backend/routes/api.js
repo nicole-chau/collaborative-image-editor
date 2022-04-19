@@ -17,19 +17,17 @@ router.get('/', async (req, res, next) => {
 })
 
 // find image
-router.get('/find', async (req, res, next) => {
-  const { body: { _id } } = req
+// router.get('/find', async (req, res, next) => {
+//   const { body: { _id } } = req
 
-  console.log('hi')
-
-  try {
-    const image = await Image.findById('6259d1f07080a831bae8fa03')
-    console.log(image)
-    res.json(image)
-  } catch (e) {
-    next(new Error('error finding image'))
-  }
-})
+//   try {
+//     const image = await Image.findById('6259d1f07080a831bae8fa03')
+//     console.log(image)
+//     res.json(image)
+//   } catch (e) {
+//     next(new Error('error finding image'))
+//   }
+// })
 
 // upload a new image from url
 router.post('/upload', isAuthenticated, async (req, res, next) => {
