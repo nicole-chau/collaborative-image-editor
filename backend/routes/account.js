@@ -37,7 +37,6 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/logout', isAuthenticated, (req, res) => {
   req.session = null
-  console.log('logged out')
   res.send('logout successful')
 })
 

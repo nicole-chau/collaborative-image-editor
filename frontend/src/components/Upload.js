@@ -8,7 +8,9 @@ const Upload = () => {
 
   const uploadImage = async () => {
     try {
-      await axios.post('api/images/upload', { url, title, brightness: 0, contrast: 0, grayscale: false })
+      await axios.post('api/images/upload', {
+        url, title, brightness: '0', contrast: '0', saturate: 0, grayscale: false, invert: false, sepia: false,
+      })
       setShowModal(false)
     } catch (e) {
       alert('failed to upload question')

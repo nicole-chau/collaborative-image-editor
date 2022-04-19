@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import Image from './Image'
 import AllImages from './AllImages'
 import Upload from './Upload'
 
@@ -39,7 +38,6 @@ const LoggedIn = () => {
         <button type="button" onClick={() => logout()} className="bg-sky-400 text-white p-1 rounded">Log out</button>
       </div>
       <Upload />
-      {/* <Image title="dog" url="https://images.indianexpress.com/2021/01/Golden-Retriever-dog.jpg" owner="nicole" lastEdited="user" collaboraters="hi" /> */}
       <AllImages user={user} />
     </>
   )

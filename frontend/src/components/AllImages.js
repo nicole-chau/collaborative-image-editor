@@ -20,8 +20,10 @@ const AllImages = ({ user }) => {
   // info for image processing
   const [dpBrightness, setDpBrightness] = useState('')
   const [dpContrast, setDpContrast] = useState('')
+  const [dpSaturate, setDpSaturate] = useState('')
   const [dpGrayscale, setDpGrayscale] = useState(false)
-
+  const [dpInvert, setDpInvert] = useState(false)
+  const [dpSepia, setDpSepia] = useState(false)
 
   useEffect(() => {
     const intervalID = setInterval(() => {
@@ -57,7 +59,10 @@ const AllImages = ({ user }) => {
 
           setDpBrightness(owned[0].brightness)
           setDpContrast(owned[0].contrast)
+          setDpSaturate(owned[0].saturate)
           setDpGrayscale(owned[0].grayscale)
+          setDpInvert(owned[0].invert)
+          setDpSepia(owned[0].sepia)
         }
       } else {
         const filter = images.filter(d => (
@@ -72,7 +77,10 @@ const AllImages = ({ user }) => {
 
         setDpBrightness(filter[0].brightness)
         setDpContrast(filter[0].contrast)
+        setDpSaturate(filter[0].saturate)
         setDpGrayscale(filter[0].grayscale)
+        setDpInvert(filter[0].invert)
+        setDpSepia(filter[0].sepia)
       }
     }
 
@@ -92,7 +100,7 @@ const AllImages = ({ user }) => {
   }, [images])
 
   const selectImage = ({
-    _id, url, title, owner, lastEdited, collaboraters, brightness, contrast, grayscale
+    _id, url, title, owner, lastEdited, collaboraters, brightness, contrast, saturate, grayscale, invert, sepia,
   }) => {
     setDisplayId(_id)
     setDisplayUrl(url)
@@ -103,7 +111,10 @@ const AllImages = ({ user }) => {
 
     setDpBrightness(brightness)
     setDpContrast(contrast)
+    setDpSaturate(saturate)
     setDpGrayscale(grayscale)
+    setDpInvert(invert)
+    setDpSepia(sepia)
   }
 
   let id = 0
@@ -111,8 +122,8 @@ const AllImages = ({ user }) => {
   return (
     <div className="flex">
       <div className="w-1/4 mr-5">
-        <button type="button" onClick={() => setShowOwned(true)}>My Images</button>
-        <button type="button" onClick={() => setShowOwned(false)}>Images Shared With Me</button>
+        <button type="button" onClick={() => setShowOwned(true)} className="bg-sky-400 text-white p-1 rounded">My Images</button>
+        <button type="button" onClick={() => setShowOwned(false)} className="bg-sky-400 text-white p-1 rounded">Images Shared With Me</button>
         {showOwned
           ? ownedImgs.map(i => <button key={id++} type="button" onClick={() => selectImage(i)} className="block p-2 rounded border-2 my-2 w-full">{i.title}</button>)
           : sharedImgs.map(i => <button key={id++} type="button" onClick={() => selectImage(i)} className="block p-2 rounded border-2 my-2 w-full">{i.title}</button>)}
@@ -122,18 +133,22 @@ const AllImages = ({ user }) => {
         {displayId === ''
           ? <p>Upload an image to start editing!</p>
           : (
-          <Image
-          id={displayId}
-          url={displayUrl}
-          title={displayTitle}
-          owner={displayOwner}
-          lastEdited={displayLastEdit}
-          collaboraters={displayCollabs}
-          setPaused={setPaused}
-          brightness={dpBrightness}
-          contrast={dpContrast}
-          grayscale={dpGrayscale}
-        />)}
+            <Image
+              id={displayId}
+              url={displayUrl}
+              title={displayTitle}
+              owner={displayOwner}
+              lastEdited={displayLastEdit}
+              collaboraters={displayCollabs}
+              setPaused={setPaused}
+              brightness={dpBrightness}
+              contrast={dpContrast}
+              saturate={dpSaturate}
+              grayscale={dpGrayscale}
+              invert={dpInvert}
+              sepia={dpSepia}
+            />
+          )}
       </div>
     </div>
   )

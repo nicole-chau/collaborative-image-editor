@@ -4,7 +4,7 @@ import { Jimage } from 'react-jimp'
 import Share from './Share'
 
 const Image = ({
-  id, url, title, owner, lastEdited, collaboraters, setPaused, brightness, contrast, grayscale,
+  id, url, title, owner, lastEdited, collaboraters, setPaused, brightness, contrast, saturate, grayscale, invert, sepia,
 }) => {
   let mapId = 0
 
@@ -14,9 +14,15 @@ const Image = ({
       <br />
       <Jimage
         src={url}
+        scaleToFit="500, 500"
         greyscale={grayscale}
+        invert={invert}
         brightness={brightness}
         contrast={contrast}
+        color={[
+          { apply: 'saturate', params: [saturate] },
+        ]}
+        sepia={sepia}
       />
       <h3 className="font-bold">Owner:</h3>
       {owner}
@@ -32,7 +38,7 @@ const Image = ({
         state={
           {
             from: {
-              id, url, brightness, contrast, grayscale,
+              id, url, title, brightness, contrast, saturate, grayscale, invert, sepia,
             },
           }
         }

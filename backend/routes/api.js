@@ -16,19 +16,6 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-// find image
-// router.get('/find', async (req, res, next) => {
-//   const { body: { _id } } = req
-
-//   try {
-//     const image = await Image.findById('6259d1f07080a831bae8fa03')
-//     console.log(image)
-//     res.json(image)
-//   } catch (e) {
-//     next(new Error('error finding image'))
-//   }
-// })
-
 // upload a new image from url
 router.post('/upload', isAuthenticated, async (req, res, next) => {
   const { body: { url, title } } = req
@@ -38,7 +25,7 @@ router.post('/upload', isAuthenticated, async (req, res, next) => {
 
   try {
     await Image.create({
-      url, title, owner: username, lastEdited: username, brightness: 0, contrast: 0, grayscale: false
+      url, title, owner: username, lastEdited: username, brightness: '0', contrast: '0', saturate: 0, grayscale: false, invert: false, sepia: false,
     })
     res.send(`image ${title} uploaded by ${username} successfully`)
   } catch (e) {
@@ -50,7 +37,7 @@ router.post('/upload', isAuthenticated, async (req, res, next) => {
 router.post('/update', isAuthenticated, async (req, res, next) => {
   const {
     body: {
-      _id, url, title, brightness, contrast, grayscale,
+      _id, url, title, brightness, contrast, saturate, grayscale, invert, sepia,
     },
   } = req
 
@@ -59,7 +46,7 @@ router.post('/update', isAuthenticated, async (req, res, next) => {
 
   try {
     await Image.updateOne({ _id }, {
-      url, title, lastEdited: username, brightness, contrast, grayscale,
+      url, title, lastEdited: username, brightness, contrast, saturate, grayscale, invert, sepia,
     })
     res.send(`image ${title} updated by ${username} successfully`)
   } catch (e) {
@@ -76,7 +63,7 @@ router.post('/share', isAuthenticated, async (req, res, next) => {
     collaboraters.forEach(c => {
       const searchUsers = allUsers.find(u => u.username === c.user)
       if (searchUsers === undefined) {
-        throw `at least one of the listed collaboraters does not exist`
+        throw new Error(`at least one of the listed collaboraters does not exist`)
       }
     })
 

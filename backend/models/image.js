@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
 const collaboraterSchema = new Schema({
-  user: { type: String, required: true }
+  user: { type: String, required: true },
 })
 
 const imageSchema = new Schema({
@@ -14,7 +14,10 @@ const imageSchema = new Schema({
   lastEdited: { type: String, required: true },
   brightness: { type: String, required: true },
   contrast: { type: String, required: true },
+  saturate: { type: Number, required: true },
   grayscale: { type: Boolean, required: true },
+  invert: { type: Boolean, required: true },
+  sepia: { type: Boolean, required: true },
 })
 
 const Image = model('Image', imageSchema)
