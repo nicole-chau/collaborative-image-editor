@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Share = ({ id, collaboraters, setPaused}) => {
+const Share = ({ id, collaboraters, setPaused }) => {
   const [collabs, setCollabs] = useState([])
   const [newCollab, setNewCollab] = useState('')
   const [showModal, setShowModal] = useState(false)
