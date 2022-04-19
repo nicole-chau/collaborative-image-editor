@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const path = require('path')
 const cookieSession = require('cookie-session')
 
+const cors = require('cors')
+
 const AccountRouter = require('./routes/account')
 const ApiRouter = require('./routes/api')
 
@@ -14,6 +16,13 @@ mongoose.connect(MONGO_URI, {
 })
 
 const app = express()
+
+// Enables CORS
+const corsOptions = {
+  origin: 'http://localhost:3000',
+}
+
+app.use(cors(corsOptions))
 
 app.use(express.json())
 
@@ -50,9 +59,9 @@ app.get('/favicon.ico', (req, res) => {
 })
 
 // set the initial entry point
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../dist/index.html'))
-// })
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'))
+})
 
 app.listen(3000, () => {
   console.log('listening on 3000')

@@ -16,6 +16,21 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// find image
+router.get('/find', async (req, res, next) => {
+  const { body: { _id } } = req
+
+  console.log('hi')
+
+  try {
+    const image = await Image.findById('6259d1f07080a831bae8fa03')
+    console.log(image)
+    res.json(image)
+  } catch (e) {
+    next(new Error('error finding image'))
+  }
+})
+
 // upload a new image from url
 router.post('/upload', isAuthenticated, async (req, res, next) => {
   const { body: { url, title } } = req
@@ -31,7 +46,7 @@ router.post('/upload', isAuthenticated, async (req, res, next) => {
   }
 })
 
-// update image url or title 
+// update image url or title
 router.post('/update', isAuthenticated, async (req, res, next) => {
   const { body: { _id, url, title } } = req
 
@@ -47,8 +62,8 @@ router.post('/update', isAuthenticated, async (req, res, next) => {
 })
 
 // share/unshare image with other users
-router.post('/share', isAuthenticated, async(req, res, next) => {
-  const { body: { _id, collaboraters }} = req
+router.post('/share', isAuthenticated, async (req, res, next) => {
+  const { body: { _id, collaboraters } } = req
 
   try {
     const allUsers = await User.find()
@@ -62,7 +77,7 @@ router.post('/share', isAuthenticated, async(req, res, next) => {
     await Image.updateOne({ _id }, { collaboraters })
     res.send(`updated collaboraters successfully`)
   } catch (e) {
-    if (e == '') {
+    if (e === '') {
       next(new Error('collaborater update failed'))
     } else {
       next(new Error(e))
