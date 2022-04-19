@@ -12,6 +12,8 @@ const AllImages = () => {
   const [displayLastEdit, setDisplayLastEdit] = useState('')
   const [displayCollabs, setDisplayCollabs] = useState([])
 
+  const [brightness, setBrightness] = useState(0)
+
   const [paused, setPaused] = useState(false)
 
   useEffect(() => {
@@ -30,6 +32,8 @@ const AllImages = () => {
               setDisplayOwner(response.data[0].owner)
               setDisplayLastEdit(response.data[0].lastEdited)
               setDisplayCollabs(response.data[0].collaboraters)
+
+              setBrightness(response.data[0].brightness)
             } else {
               const { data } = response
               const filter = data.filter(d => (
@@ -41,6 +45,8 @@ const AllImages = () => {
               setDisplayOwner(filter[0].owner)
               setDisplayLastEdit(filter[0].lastEdited)
               setDisplayCollabs(filter[0].collaboraters)
+
+              setBrightness(filter[0].brightness)
             }
           } catch (e) {
             alert('failed to get images')
@@ -74,7 +80,7 @@ const AllImages = () => {
       </div>
 
       <div className="border-l-2 pl-5">
-        <Image id={displayId} url={displayUrl} title={displayTitle} owner={displayOwner} lastEdited={displayLastEdit} collaboraters={displayCollabs} setPaused={setPaused}/>
+        <Image id={displayId} url={displayUrl} title={displayTitle} owner={displayOwner} lastEdited={displayLastEdit} collaboraters={displayCollabs} setPaused={setPaused} brightness={brightness}/>
       </div>
     </div>
   )

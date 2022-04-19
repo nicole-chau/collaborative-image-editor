@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import Share from './Share'
 
 const Image = ({
-  id, url, title, owner, lastEdited, collaboraters, setPaused,
+  id, url, title, owner, lastEdited, collaboraters, setPaused, brightness,
 }) => {
   // const [newAnswer, setNewAnswer] = useState('')
 
@@ -17,7 +18,14 @@ const Image = ({
   //   e.target.reset()
   // }
 
+  // const [brightness, setBrightness] = useState(0)
+  // const [contrast, setContrast] = useState(0)
+
+  console.log(brightness)
+
   let mapId = 0
+
+  console.log(url)
 
   return (
     <>
@@ -33,7 +41,9 @@ const Image = ({
       <h3 className="font-bold">Last Edited By:</h3>
       {lastEdited}
       <Share collaboraters={collaboraters} id={id} setPaused={setPaused} />
-      <button>Edit</button>
+      <Link to="/edit" state={{ from: { id, url, brightness } }}>
+        <button type="button" className="bg-sky-400 text-white p-1 rounded w-1/4">Edit</button>
+      </Link>
     </>
   )
 }

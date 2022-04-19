@@ -43,12 +43,14 @@
     "@types/react-imgpro": "1.3.1",
     "axios": "^0.26.1",
     "babel-eslint": "^10.1.0",
+    "caman": "^4.1.2",
     "concurrently": "^7.0.0",
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.2.0",
     "express": "^4.17.3",
+    "fibers": "^5.0.1",
     "file-saver": "^2.0.5",
     "glfx": "^0.0.4",
     "image-js": "^0.34.0",
@@ -59,6 +61,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-imgpro": "1.4.1",
+    "react-jimp": "^1.1.7",
     "react-router-dom": "^6.2.2",
     "react-scripts": "4.0.0"
   }

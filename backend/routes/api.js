@@ -39,7 +39,7 @@ router.post('/upload', isAuthenticated, async (req, res, next) => {
   const { session: { username } } = req
 
   try {
-    await Image.create({ url, title, owner: username, lastEdited: username })
+    await Image.create({ url, title, owner: username, lastEdited: username, brightness: 0 })
     res.send(`image ${title} uploaded by ${username} successfully`)
   } catch (e) {
     next(new Error('image upload failed'))
@@ -48,13 +48,13 @@ router.post('/upload', isAuthenticated, async (req, res, next) => {
 
 // update image url or title
 router.post('/update', isAuthenticated, async (req, res, next) => {
-  const { body: { _id, url, title } } = req
+  const { body: { _id, url, title, brightness } } = req
 
   // get author key
   const { session: { username } } = req
 
   try {
-    await Image.updateOne({ _id }, { url, title, lastEdited: username })
+    await Image.updateOne({ _id }, { url, title, lastEdited: username, brightness })
     res.send(`image ${title} updated by ${username} successfully`)
   } catch (e) {
     next(new Error('image update failed'))

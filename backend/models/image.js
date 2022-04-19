@@ -11,7 +11,8 @@ const imageSchema = new Schema({
   title: { type: String, required: true },
   owner: { type: String, required: true },
   collaboraters: [collaboraterSchema],
-  lastEdited: { type: String, required: true }
+  lastEdited: { type: String, required: true },
+  brightness: { type: Number, required: true },
 })
 
 const Image = model('Image', imageSchema)
