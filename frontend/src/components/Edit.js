@@ -104,8 +104,8 @@ const Edit = () => {
             <input type="checkbox" id="sepia" name="sepia" onChange={e => setSepia(e.target.checked)} className="m-1" />
             <label htmlFor="sepia">Sepia</label>
           </div>
-          <button type="button" onClick={() => save()} className="bg-sky-400 text-white p-1 mr-2 my-3 rounded">Save</button>
-          <button type="button" onClick={() => navigate(-1)} className="bg-sky-400 text-white p-1 my-3 rounded">Back to Images</button>
+          <button type="button" onClick={() => save()} className="bg-blue-400 text-white p-1 mr-2 my-3 rounded">Save</button>
+          <button type="button" onClick={() => navigate(-1)} className="bg-slate-400 text-white p-1 my-3 rounded">Back to Images</button>
         </div>
       </div>
     </div>

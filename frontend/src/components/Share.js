@@ -44,7 +44,7 @@ const Share = ({ id, collaboraters, setPaused}) => {
 
   return (
     <>
-      <button type="button" onClick={() => handleModal()} className="block bg-sky-400 text-white p-2 rounded w-30 my-2 mr-3">Share</button>
+      <button type="button" onClick={() => handleModal()} className="block bg-blue-400 text-white p-2 rounded w-30 my-4 mr-3">Share</button>
       {showModal && (
         <div className="flex justify-center items-center bg-gray-200 bg-opacity-50 absolute inset-0">
           <div className="bg-white p-5 rounded">
@@ -54,8 +54,8 @@ const Share = ({ id, collaboraters, setPaused}) => {
             <br />
             Enter a username:
             <input onChange={e => setNewCollab(e.target.value)} className="block w-80 p-2 my-2 border-2 rounded" />
-            <button type="button" onClick={() => handleAdd(newCollab)} className="bg-sky-400 text-white p-2 rounded w-30 my-2 mr-3">Add as collaborater</button>
-            <button type="button" onClick={() => handleSave()} className="bg-sky-400 text-white p-2 rounded w-30 my-2 mr-3">Save</button>
+            <button type="button" onClick={() => handleAdd(newCollab)} className="bg-blue-400 text-white p-2 rounded w-30 my-2 mr-3">Add as collaborater</button>
+            <button type="button" onClick={() => handleSave()} className="bg-blue-400 text-white p-2 rounded w-30 my-2 mr-3">Save</button>
             <button type="button" onClick={() => handleCancel()} className="bg-slate-400 text-white p-2 rounded w-30 my-3">Cancel</button>
           </div>
         </div>

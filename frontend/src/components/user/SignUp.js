@@ -21,11 +21,11 @@ const SignUp = () => {
     <div className="mx-auto my-12 w-1/4">
       <h1 className="font-sans text-3xl font-bold mb-4">Sign Up</h1>
       <UserForm setUsername={setUsername} setPassword={setPassword} />
-      <button type="button" onClick={() => createUser()} className="bg-sky-400 text-white p-2 rounded w-30 my-3">Sign Up</button>
+      <button type="button" onClick={() => createUser()} className="bg-blue-400 text-white p-2 rounded w-30 my-3">Sign Up</button>
       <br />
       <p>
         Already have an account? &nbsp;
-        <Link to="/login" className="text-sky-500">Log in here!</Link>
+        <Link to="/login" className="text-blue-500">Log in here!</Link>
       </p>
       <br />
     </div>

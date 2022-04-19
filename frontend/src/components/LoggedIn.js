@@ -35,7 +35,7 @@ const LoggedIn = () => {
           Hi&nbsp;
           {user}
         </p>
-        <button type="button" onClick={() => logout()} className="bg-sky-400 text-white p-1 rounded">Log out</button>
+        <button type="button" onClick={() => logout()} className="bg-blue-400 text-white p-1 rounded">Log out</button>
       </div>
       <Upload />
       <AllImages user={user} />

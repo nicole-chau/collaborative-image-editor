@@ -122,8 +122,10 @@ const AllImages = ({ user }) => {
   return (
     <div className="flex">
       <div className="w-1/4 mr-5">
-        <button type="button" onClick={() => setShowOwned(true)} className="bg-sky-400 text-white p-1 rounded">My Images</button>
-        <button type="button" onClick={() => setShowOwned(false)} className="bg-sky-400 text-white p-1 rounded">Images Shared With Me</button>
+        <div className="flex">
+          <button type="button" onClick={() => setShowOwned(true)} className={`${showOwned ? 'bg-blue-400 ' : 'bg-blue-200'} text-white p-2 mr-2 my-2 rounded w-1/2`}>My Images</button>
+          <button type="button" onClick={() => setShowOwned(false)} className={`${showOwned ? 'bg-blue-200 ' : 'bg-blue-400'} text-white p-2 my-2 rounded w-1/2`}>Shared With Me</button>
+        </div>
         {showOwned
           ? ownedImgs.map(i => <button key={id++} type="button" onClick={() => selectImage(i)} className="block p-2 rounded border-2 my-2 w-full">{i.title}</button>)
           : sharedImgs.map(i => <button key={id++} type="button" onClick={() => selectImage(i)} className="block p-2 rounded border-2 my-2 w-full">{i.title}</button>)}
