@@ -44,6 +44,8 @@ const Share = ({ id, collaboraters, setPaused }) => {
     setShowModal(false)
   }
 
+  let id = 0
+
   return (
     <>
       <button type="button" onClick={() => setShowModal(true)} className="block bg-sky-400 text-white p-2 rounded w-30 my-2 mr-3">Share</button>
@@ -52,7 +54,7 @@ const Share = ({ id, collaboraters, setPaused }) => {
           <div className="bg-white p-5 rounded">
             Users shared with:
             <br />
-            {collabs.map(c => <button type="button" onClick={() => handleRemove(c)} className="bg-slate-200 p-2 rounded w-30 my-3">{c.user} x</button>)}
+            {collabs.map(c => <button key={id++} type="button" onClick={() => handleRemove(c)} className="bg-slate-200 p-2 rounded w-30 my-3">{c.user} x</button>)}
             <br />
             Enter a username:
             <input onChange={e => setNewCollab(e.target.value)} className="block w-80 p-2 my-2 border-2 rounded" />

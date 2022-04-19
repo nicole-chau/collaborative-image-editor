@@ -12,7 +12,9 @@ const imageSchema = new Schema({
   owner: { type: String, required: true },
   collaboraters: [collaboraterSchema],
   lastEdited: { type: String, required: true },
-  brightness: { type: Number, required: true },
+  brightness: { type: String, required: true },
+  contrast: { type: String, required: true },
+  grayscale: { type: Boolean, required: true },
 })
 
 const Image = model('Image', imageSchema)

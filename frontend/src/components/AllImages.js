@@ -12,7 +12,9 @@ const AllImages = () => {
   const [displayLastEdit, setDisplayLastEdit] = useState('')
   const [displayCollabs, setDisplayCollabs] = useState([])
 
-  const [brightness, setBrightness] = useState(0)
+  const [dpBrightness, setDpBrightness] = useState('')
+  const [dpContrast, setDpContrast] = useState('')
+  const [dpGrayscale, setDpGrayscale] = useState(false)
 
   const [paused, setPaused] = useState(false)
 
@@ -33,7 +35,9 @@ const AllImages = () => {
               setDisplayLastEdit(response.data[0].lastEdited)
               setDisplayCollabs(response.data[0].collaboraters)
 
-              setBrightness(response.data[0].brightness)
+              setDpBrightness(response.data[0].brightness)
+              setDpContrast(response.data[0].contrast)
+              setDpGrayscale(response.data[0].grayscale)
             } else {
               const { data } = response
               const filter = data.filter(d => (
@@ -46,7 +50,9 @@ const AllImages = () => {
               setDisplayLastEdit(filter[0].lastEdited)
               setDisplayCollabs(filter[0].collaboraters)
 
-              setBrightness(filter[0].brightness)
+              setDpBrightness(filter[0].brightness)
+              setDpContrast(filter[0].contrast)
+              setDpGrayscale(filter[0].grayscale)
             }
           } catch (e) {
             alert('failed to get images')
@@ -61,7 +67,7 @@ const AllImages = () => {
   }, [displayId])
 
   const selectImage = ({
-    _id, url, title, owner, lastEdited, collaboraters,
+    _id, url, title, owner, lastEdited, collaboraters, brightness, contrast, grayscale
   }) => {
     setDisplayId(_id)
     setDisplayUrl(url)
@@ -69,6 +75,10 @@ const AllImages = () => {
     setDisplayOwner(owner)
     setDisplayLastEdit(lastEdited)
     setDisplayCollabs(collaboraters)
+
+    setDpBrightness(brightness)
+    setDpContrast(contrast)
+    setDpGrayscale(grayscale)
   }
 
   let id = 0
@@ -80,7 +90,18 @@ const AllImages = () => {
       </div>
 
       <div className="border-l-2 pl-5">
-        <Image id={displayId} url={displayUrl} title={displayTitle} owner={displayOwner} lastEdited={displayLastEdit} collaboraters={displayCollabs} setPaused={setPaused} brightness={brightness}/>
+        <Image
+          id={displayId}
+          url={displayUrl}
+          title={displayTitle}
+          owner={displayOwner}
+          lastEdited={displayLastEdit}
+          collaboraters={displayCollabs}
+          setPaused={setPaused}
+          brightness={dpBrightness}
+          contrast={dpContrast}
+          grayscale={dpGrayscale}
+        />
       </div>
     </div>
   )
